@@ -2,11 +2,11 @@ using System;
 
 namespace humans_and_animals
 {
-    class Seals : Animals
+    class Elephant : Animal
     {
         public override void ListOfAnimals()
         {
-            Console.WriteLine("{0} är en säl", name);
+            Console.WriteLine("{0} är en elefant", name);
         }
     }
 }

@@ -2,7 +2,7 @@ using System;
 
 namespace humans_and_animals
 {
-    class Animals
+    class Animal
     {
         public string name;
         public int hungerLevel = 0;

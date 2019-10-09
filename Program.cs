@@ -7,58 +7,59 @@ namespace humans_and_animals
     {
         static void Main(string[] args)
         {
-            List<Animals> zoo = new List<Animals>();
-            Bears zooBear1 = new Bears();
+            List<Animal> zoo = new List<Animal>();
+
+            Bear zooBear1 = new Bear();
             zooBear1.name = "Berit";
             zooBear1.hungerLevel = 0; 
             zoo.Add(zooBear1);
 
-            Bears zooBear2 = new Bears();
+            Bear zooBear2 = new Bear();
             zooBear2.name = "Bert";
             zooBear2.hungerLevel = 0;
             zoo.Add(zooBear2); 
 
-            Coyotes zooCoyote1 = new Coyotes();
+            Coyote zooCoyote1 = new Coyote();
             zooCoyote1.name = "Calle";
             zooCoyote1.hungerLevel = 0;
             zoo.Add(zooCoyote1);
 
-            Coyotes zooCoyote2 = new Coyotes();
+            Coyote zooCoyote2 = new Coyote();
             zooCoyote2.name = "Cissi";
             zooCoyote2.hungerLevel = 0;
             zoo.Add(zooCoyote2);
             
-            Elephants zooElephant1 = new Elephants();
+            Elephant zooElephant1 = new Elephant();
             zooElephant1.name = "Erik";
             zooElephant1.hungerLevel = 0;
             zoo.Add(zooElephant1);
             
-            Elephants zooElephant2 = new Elephants();
+            Elephant zooElephant2 = new Elephant();
             zooElephant2.name = "Evert";
             zooElephant2.hungerLevel = 0;
             zoo.Add(zooElephant2);
 
-            Giraffes zooGiraffe1 = new Giraffes();
+            Giraffe zooGiraffe1 = new Giraffe();
             zooGiraffe1.name = "Gillian";
             zooGiraffe1.hungerLevel = 0;
             zoo.Add(zooGiraffe1);
 
-            Giraffes zooGiraffe2 = new Giraffes();
+            Giraffe zooGiraffe2 = new Giraffe();
             zooGiraffe2.name = "Gurly";
             zooGiraffe2.hungerLevel = 0;
             zoo.Add(zooGiraffe2);
 
-            Seals zooSeal1 = new Seals();
+            Seal zooSeal1 = new Seal();
             zooSeal1.name = "Sven";
             zooSeal1.hungerLevel = 0;
             zoo.Add(zooSeal1);
 
-            Seals zooSeal2 = new Seals();
+            Seal zooSeal2 = new Seal();
             zooSeal2.name = "Svea";
             zooSeal2.hungerLevel = 0;
             zoo.Add(zooSeal2);
 
-            foreach (Animals animals in zoo)
+            foreach (Animal animals in zoo)
             {
                 animals.ListOfAnimals();
             }
