@@ -19,7 +19,7 @@ namespace humans_and_animals
         // method to tell that animal starves
         public void AnimalStarves()
         {
-            Console.WriteLine(name + " har inte fått mat idag :´(");
+            Console.WriteLine(species + " " + name + " har inte fått mat idag :´(");
         }
 
         // method that checks food availability and lets animal eat
@@ -29,6 +29,7 @@ namespace humans_and_animals
             {
                 Program.nrOfMeatLeft--;
                 Program.nrOfVeggiesLeft--;
+                hungerLevel = 0;
                 return true;
             }
 
@@ -48,6 +49,21 @@ namespace humans_and_animals
             return false;
         }
 
+        public void CheckHungerLevel()
+        {
+            if (isHungry(hungerLevel))
+            {
+                // if there's no food left
+                if (!Eat())
+                {
+                    AnimalStarves();
+                }
+            }
+            else
+            {
+                Console.WriteLine(GetSpecies() + " " + GetName() + " behöver inte äta.");
+            }
+        }
         // gets animal name
         public string GetName()
         {
@@ -76,6 +92,7 @@ namespace humans_and_animals
             if (Program.nrOfVeggiesLeft > 0)
             {
                 Program.nrOfVeggiesLeft--;
+                hungerLevel = 0;
                 Console.WriteLine(name + " var hungrig och åt. Det finns " + Program.nrOfVeggiesLeft + " blad kvar.");
                 return true;
             }
@@ -94,6 +111,22 @@ namespace humans_and_animals
         {
             species = "Giraff";
             maxHunger = 7;
+        }
+
+           // method that checks food availability and lets animal eat
+        public override bool Eat()
+        {
+            if (Program.nrOfVeggiesLeft > 0)
+            {
+                Program.nrOfVeggiesLeft--;
+                hungerLevel = 0;
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
         }
     }
 

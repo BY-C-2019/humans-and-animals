@@ -17,12 +17,13 @@ namespace humans_and_animals
 
             while (true)
             {
+                Console.Clear();
+                
                 day++;
                 Console.WriteLine("Det är dag " + day + ":");
                 Console.WriteLine("-------");
 
                 // LÄGG TILL DIN NYA KOD HÄR
-
                 Console.WriteLine("Djuren som finns på djurparken idag:");
                 Console.WriteLine();
 
@@ -31,27 +32,11 @@ namespace humans_and_animals
                     // print which animals are present
                     Console.WriteLine(animal.GetSpecies() + " " + animal.GetName());
 
+                    // check if animal needs to eat
+                    animal.CheckHungerLevel();
+
                     // raise hungerlevel with 1
                     animal.hungerLevel++;
-
-                    // switch to check individual hunger levels
-                    switch (animal.GetSpecies())
-                    {
-                        case "Elefant":
-                            if (animal.isHungry(animal.hungerLevel))
-                            {
-                                // if there's no food left
-                                if (!animal.Eat())
-                                {
-                                    animal.AnimalStarves();
-                                }
-                            }
-                            else
-                            {
-                                Console.WriteLine(animal.GetName() + " behöver inte äta.");
-                            }
-                            break;
-                    }
                 }
 
                 // Wait for the next day
