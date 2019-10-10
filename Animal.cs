@@ -6,7 +6,7 @@ namespace humans_and_animals
     {
         protected string name;
         protected string species;
-        public int hungerLevel = 0;
+        protected int hungerLevel = 0;
         protected int maxHunger;
 
         // method to name your animal
@@ -20,6 +20,12 @@ namespace humans_and_animals
         public void AnimalStarves()
         {
             Console.WriteLine(species + " " + name + " har inte fått mat idag :´(");
+        }
+
+        // raise hunger level
+        public void RaiseHungerLevel()
+        {
+            hungerLevel++;
         }
 
         // method that checks food availability and lets animal eat

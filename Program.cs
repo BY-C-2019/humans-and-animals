@@ -35,7 +35,7 @@ namespace humans_and_animals
                     animal.GiveFood();
 
                     // raise hungerlevel with 1
-                    animal.hungerLevel++;
+                    animal.RaiseHungerLevel();
                 }
 
                 // Wait for the next day
