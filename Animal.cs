@@ -16,13 +16,18 @@ namespace humans_and_animals
             name = Console.ReadLine();
         }
 
+        public void ShowAnimal()
+        {
+            Console.WriteLine(species + " " + name);
+        }
+
         // method to tell that animal starves
-        public void AnimalStarves()
+        protected void AnimalStarves()
         {
             Console.WriteLine(species + " " + name + " har inte fått mat idag :´(");
         }
 
-        // raise hunger level
+        // method to raise hunger level
         public void RaiseHungerLevel()
         {
             hungerLevel++;
@@ -55,7 +60,7 @@ namespace humans_and_animals
         }
 
         // method to check if animal is hungry
-        public virtual bool isHungry(int hungerLevel)
+        protected virtual bool isHungry(int hungerLevel)
         {
             if (hungerLevel >= maxHunger)
             {
@@ -64,6 +69,7 @@ namespace humans_and_animals
             return false;
         }
 
+        // method to feed the animal
         public void GiveFood()
         {
             if (isHungry(hungerLevel))
@@ -84,12 +90,6 @@ namespace humans_and_animals
         public string GetName()
         {
             return name;
-        }
-
-        // gets animal species
-        public string GetSpecies()
-        {
-            return species;
         }
     }
 

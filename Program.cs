@@ -29,11 +29,11 @@ namespace humans_and_animals
                 foreach (Animal animal in Menu.myAnimals)
                 {
                     // print animal species and name
-                    Console.WriteLine(animal.GetSpecies() + " " + animal.GetName());
+                    animal.ShowAnimal();
 
                     // give food if animal is hungry
                     animal.GiveFood();
-
+                    
                     // raise hungerlevel with 1
                     animal.RaiseHungerLevel();
                 }
