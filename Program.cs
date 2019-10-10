@@ -4,8 +4,8 @@ namespace humans_and_animals
 {
     class Program
     {
-        public static int nrOfMeatLeft = 50;
-        public static int nrOfVeggiesLeft = 50;
+        public static int nrOfMeatLeft = 1;
+        public static int nrOfVeggiesLeft = 1;
 
         static void Main(string[] args)
         {

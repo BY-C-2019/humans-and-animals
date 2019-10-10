@@ -25,18 +25,27 @@ namespace humans_and_animals
         // method that checks food availability and lets animal eat
         public virtual bool Eat()
         {
-            if (Program.nrOfMeatLeft > 0 && Program.nrOfVeggiesLeft > 0)
+            if (Program.nrOfMeatLeft > 0)
             {
                 Program.nrOfMeatLeft--;
+                hungerLevel = 0;
+            }
+            else if (Program.nrOfVeggiesLeft > 0)
+            {
                 Program.nrOfVeggiesLeft--;
                 hungerLevel = 0;
-                return true;
             }
-
             else
             {
+                hungerLevel = 3;
                 return false;
             }
+
+            Console.WriteLine(name + " var hungrig och åt. Det finns "
+            + Program.nrOfVeggiesLeft + " blad och "
+            + Program.nrOfMeatLeft + " köttbitar kvar.");
+
+            return true;
         }
 
         // method to check if animal is hungry 
@@ -61,7 +70,7 @@ namespace humans_and_animals
             }
             else
             {
-                Console.WriteLine(GetSpecies() + " " + GetName() + " behöver inte äta.");
+                Console.WriteLine(GetName() + " behöver inte äta.");
             }
         }
         // gets animal name
@@ -75,7 +84,6 @@ namespace humans_and_animals
         {
             return species;
         }
-
     }
 
     class Elefant : Animal
@@ -99,6 +107,7 @@ namespace humans_and_animals
 
             else
             {
+                hungerLevel = 10;
                 return false;
             }
         }
@@ -113,18 +122,19 @@ namespace humans_and_animals
             maxHunger = 7;
         }
 
-           // method that checks food availability and lets animal eat
         public override bool Eat()
         {
             if (Program.nrOfVeggiesLeft > 0)
             {
                 Program.nrOfVeggiesLeft--;
                 hungerLevel = 0;
+                Console.WriteLine(name + " var hungrig och åt. Det finns " + Program.nrOfVeggiesLeft + " blad kvar.");
                 return true;
             }
 
             else
             {
+                hungerLevel = 7;
                 return false;
             }
         }
@@ -138,6 +148,23 @@ namespace humans_and_animals
             species = "Prärievarg";
             maxHunger = 15;
         }
+
+        public override bool Eat()
+        {
+            if (Program.nrOfMeatLeft > 0)
+            {
+                Program.nrOfMeatLeft--;
+                hungerLevel = 0;
+                Console.WriteLine(name + " var hungrig och åt. Det finns " + Program.nrOfMeatLeft + " köttbitar kvar.");
+                return true;
+            }
+
+            else
+            {
+                hungerLevel = 15;
+                return false;
+            }
+        }
     }
 
     // eats meat (like wolf)
@@ -147,6 +174,23 @@ namespace humans_and_animals
         {
             species = "Säl";
             maxHunger = 13;
+        }
+
+        public override bool Eat()
+        {
+            if (Program.nrOfMeatLeft > 0)
+            {
+                Program.nrOfMeatLeft--;
+                hungerLevel = 0;
+                Console.WriteLine(name + " var hungrig och åt. Det finns " + Program.nrOfMeatLeft + " köttbitar kvar.");
+                return true;
+            }
+
+            else
+            {
+                hungerLevel = 13;
+                return false;
+            }
         }
     }
 
@@ -159,5 +203,4 @@ namespace humans_and_animals
             maxHunger = 3;
         }
     }
-
 }
