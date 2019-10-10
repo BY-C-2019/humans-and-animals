@@ -18,22 +18,21 @@ namespace humans_and_animals
             while (true)
             {
                 Console.Clear();
-                
                 day++;
                 Console.WriteLine("Det är dag " + day + ":");
                 Console.WriteLine("-------");
 
                 // LÄGG TILL DIN NYA KOD HÄR
                 Console.WriteLine("Djuren som finns på djurparken idag:");
-                Console.WriteLine();
+                Console.WriteLine("-------");
 
                 foreach (Animal animal in Menu.myAnimals)
                 {
-                    // print which animals are present
+                    // print animal species and name
                     Console.WriteLine(animal.GetSpecies() + " " + animal.GetName());
 
-                    // check if animal needs to eat
-                    animal.CheckHungerLevel();
+                    // give food if animal is hungry
+                    animal.GiveFood();
 
                     // raise hungerlevel with 1
                     animal.hungerLevel++;

@@ -48,7 +48,7 @@ namespace humans_and_animals
             return true;
         }
 
-        // method to check if animal is hungry 
+        // method to check if animal is hungry
         public virtual bool isHungry(int hungerLevel)
         {
             if (hungerLevel >= maxHunger)
@@ -58,7 +58,7 @@ namespace humans_and_animals
             return false;
         }
 
-        public void CheckHungerLevel()
+        public void GiveFood()
         {
             if (isHungry(hungerLevel))
             {
@@ -73,6 +73,7 @@ namespace humans_and_animals
                 Console.WriteLine(GetName() + " behöver inte äta.");
             }
         }
+
         // gets animal name
         public string GetName()
         {
