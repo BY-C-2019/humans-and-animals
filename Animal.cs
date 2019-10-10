@@ -4,8 +4,10 @@ namespace humans_and_animals
 {
     public class Animal
     {
-        string name;
-        protected string kind;
+        protected string name;
+        protected string species;
+        public int hungerLevel = 0;
+        protected int maxHunger;
 
         // method to name your animal
         public void NameYourAnimal()
@@ -14,26 +16,75 @@ namespace humans_and_animals
             name = Console.ReadLine();
         }
 
-        // gets name
+        // method to tell that animal starves
+        public void AnimalStarves()
+        {
+            Console.WriteLine(name + " har inte fått mat idag :´(");
+        }
+
+        // method that checks food availability and lets animal eat
+        public virtual bool Eat()
+        {
+            if (Program.nrOfMeatLeft > 0 && Program.nrOfVeggiesLeft > 0)
+            {
+                Program.nrOfMeatLeft--;
+                Program.nrOfVeggiesLeft--;
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+        }
+
+        // method to check if animal is hungry 
+        public virtual bool isHungry(int hungerLevel)
+        {
+            if (hungerLevel >= maxHunger)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        // gets animal name
         public string GetName()
         {
             return name;
         }
 
-        // gets kind
-        public string GetKind()
+        // gets animal species
+        public string GetSpecies()
         {
-            return kind;
+            return species;
         }
+
     }
 
     class Elefant : Animal
     {
+        // constructor
         public Elefant()
         {
-            kind = "Elefant";
+            species = "Elefant";
+            maxHunger = 10;
         }
 
+        public override bool Eat()
+        {
+            if (Program.nrOfVeggiesLeft > 0)
+            {
+                Program.nrOfVeggiesLeft--;
+                Console.WriteLine(name + " var hungrig och åt. Det finns " + Program.nrOfVeggiesLeft + " blad kvar.");
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+        }
     }
 
     // eats leaves (like elefant)
@@ -41,7 +92,8 @@ namespace humans_and_animals
     {
         public Giraffe()
         {
-            kind = "Giraff";
+            species = "Giraff";
+            maxHunger = 7;
         }
     }
 
@@ -50,7 +102,8 @@ namespace humans_and_animals
     {
         public Prariewolf()
         {
-            kind = "Prärievarg";
+            species = "Prärievarg";
+            maxHunger = 15;
         }
     }
 
@@ -59,7 +112,8 @@ namespace humans_and_animals
     {
         public Seal()
         {
-            kind = "Säl";
+            species = "Säl";
+            maxHunger = 13;
         }
     }
 
@@ -68,7 +122,8 @@ namespace humans_and_animals
     {
         public Bear()
         {
-            kind = "Björn";
+            species = "Björn";
+            maxHunger = 3;
         }
     }
 

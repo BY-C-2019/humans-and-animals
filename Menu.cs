@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace humans_and_animals
 {
-    class AnimalCreator
+    class Menu
     {
         public static List<Animal> myAnimals = new List<Animal>();
 
@@ -14,6 +14,7 @@ namespace humans_and_animals
 
             while (createAnimals)
             {
+                Console.Clear();
                 Console.WriteLine("Vilket slags djur vill du skapa?");
                 Console.WriteLine("[E]lefant");
                 Console.WriteLine("[G]iraff");
