@@ -7,8 +7,6 @@ namespace humans_and_animals
     {
         List<Bear> bearList = new List<Bear>();
         int hungryInDays;
-        static bool eatsMeat = true;
-        static bool eatsVeg = true;
         public Bear()
         {
 
@@ -27,27 +25,73 @@ namespace humans_and_animals
             bearList.Add(snoopy);
             bearList.Add(björnsson);
         }
-        public int ToEat()//Minskar när björnen bör äta med en dag och kollar om han är hungrig.
+        public void CheckHunger()//Minskar när björnen bör äta med en dag och kollar om han är hungrig.
         {
             int nrOfBearsHungry = 0;
             foreach (Bear bear in bearList)
             {
                 bear.hungryInDays--;
-                Console.WriteLine(bear.hungryInDays);
                 if (bear.Name == "Snoopy" && bear.hungryInDays == 0)
                 {
                     nrOfBearsHungry++;
                     bear.Hunger = true;
                     bear.hungryInDays = 3;
+                    if (Program.nrOfMeatLeft > 0) //if there are is any meatleft
+                    {
+                        Eat(bear.Name, Program.meat);
+                    }
+                    else if (Program.nrOfVeggiesLeft > 0) //if there are any veggiesleft
+                    {
+                        Eat(bear.Name, Program.veggie);
+                    }
+                    else
+                    {
+                        Program.foodLeft = false;
+                        System.Console.WriteLine("There is no food left.");
+                    }
+                }
+                else if (bear.Name == "Snoopy")
+                {
+                    System.Console.WriteLine("The bear " + bear.Name + " is satisfied.");
                 }
                 if (bear.Name == "Björnsson" && bear.hungryInDays == 0)
                 {
                     nrOfBearsHungry++;
                     bear.Hunger = true;
                     bear.hungryInDays = 3;
+                    if (Program.nrOfVeggiesLeft > 0) //if there are any veggiesleft
+                    {
+                        Eat(bear.Name, Program.veggie);
+                    }
+                    else if (Program.nrOfMeatLeft > 0) //if there are is any meatleft
+                    {
+                        Eat(bear.Name, Program.meat);
+                    }
+                    else
+                    {
+                        Program.foodLeft = false;
+                        System.Console.WriteLine("There is no food left.");
+                    }
+                }
+                else if (bear.Name == "Björnsson")
+                {
+                    System.Console.WriteLine("The bear " + bear.Name + " is satisfied.");
                 }
             }
-            return nrOfBearsHungry;
+        }
+        public void Eat(string bearName, string foodName)
+        {
+            System.Console.Write("The bear " + bearName + " ate {0} and is now satisified. ", foodName);
+            if (foodName == "veggie")
+            {
+                Program.nrOfVeggiesLeft--;
+                System.Console.WriteLine("There are {1} {0}(s) left.", foodName, Program.nrOfVeggiesLeft);
+            }
+            if (foodName == "meat")
+            {
+                Program.nrOfMeatLeft--;
+                System.Console.WriteLine("There are {1} {0}(s) left.", foodName, Program.nrOfMeatLeft);
+            }
         }
     }
 }
