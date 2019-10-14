@@ -25,7 +25,11 @@ namespace humans_and_animals
         // method to tell that animal starves
         protected void AnimalStarves()
         {
-            Console.WriteLine(species + " " + name + " har inte fått mat idag :´(");
+            Console.WriteLine(species + " " + name + " fick ingen mat idag, du har glömt köpa ny!");
+            Console.WriteLine("När PETA får nys om att du missköter din verksamhet tar det inte long tid och polisen stänger ner djurparken.");
+            Console.WriteLine("---- SLUT ----");
+            Console.ReadKey();
+            return;
         }
 
         // method to raise hunger level
