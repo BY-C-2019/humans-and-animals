@@ -9,9 +9,26 @@ namespace humans_and_animals
             this.name = giraffeName;
             this.hungerLevel = giraffeHungerLevel;
         }
-        public override void ListOfAnimals()
+        public override void ListOfAnimals(ref int nrOfVeggiesLeft,ref int nrOfMeatLeft)
         {
-            Console.WriteLine("{0} är en giraff", name);
+            RaiseHungerLevel(ref hungerLevel);
+            if (hungerLevel == 7)
+            {
+                if (nrOfVeggiesLeft == 0)
+                {
+                    NoVeggisLeft(ref name);
+                }
+                else
+                {
+                    nrOfVeggiesLeft--;
+                    Console.WriteLine("Giraffen {0} behövde äta och åt ett blad", name);
+                    Eat(ref hungerLevel);
+                }
+            }  
+            else
+            {
+                Console.WriteLine("Giraffen {0} är mätt och glad idag", name);
+            }
         }
     }
 }

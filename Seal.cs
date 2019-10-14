@@ -9,9 +9,25 @@ namespace humans_and_animals
             this.name = sealName;
             this.hungerLevel = sealHungerLevel;
         }
-        public override void ListOfAnimals()
+        public override void ListOfAnimals(ref int nrOfVeggiesLeft,ref int nrOfMeatLeft)
         {
-            Console.WriteLine("{0} är en säl", name);
+           RaiseHungerLevel(ref hungerLevel);
+            if (hungerLevel == 13)
+            {
+                if (nrOfMeatLeft == 0)
+                {
+                    NoMeetLeft(ref name);
+                    return;
+                }
+                nrOfMeatLeft--;
+                Console.WriteLine("Sälen {0} behövde äta och åt en köttbit", name);
+                Eat(ref hungerLevel);
+                
+            }
+            else
+            {
+            Console.WriteLine("Sälen {0} är mätt och glad idag", name);
+            }
         }
     }
 }

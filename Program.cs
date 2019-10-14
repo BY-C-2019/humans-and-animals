@@ -9,7 +9,7 @@ namespace humans_and_animals
         {
             List<Animal> zoo = new List<Animal>();
 
-            //Lägger till djur i zoo
+            //Skapar och lägger till djur med namn och hungernivå i zoo
             Bear zooBear1 = new Bear("Berit", 0);
             zoo.Add(zooBear1);
 
@@ -39,11 +39,34 @@ namespace humans_and_animals
 
             Seal zooSeal2 = new Seal("Svea", 0);
             zoo.Add(zooSeal2);
+            int nrOfMeatLeft = 50;
+            int nrOfVeggiesLeft = 50;
 
-            foreach (Animal animals in zoo)
+            int day = 0;
+            // En loop för att göra ny dag
+            while (true)
             {
-                animals.ListOfAnimals();
-            }
+                Console.Clear();
+                day++;
+                Console.WriteLine("Det är dag " + day + ":");
+                
+                foreach (Animal animals in zoo)
+                {
+                    animals.ListOfAnimals(ref nrOfVeggiesLeft,ref nrOfMeatLeft);
+                }
+                if (nrOfVeggiesLeft == 0 || nrOfMeatLeft == 0)
+                {
+                    Console.WriteLine("Det är nu dag {0} och maten är slut!", day);
+                    Console.WriteLine("Välkommen tillbaka näst år!");
+                    return;
+                }
+                Console.WriteLine("Det finns nu, {0} köttbitar kvar och {1} blad kvar",nrOfMeatLeft, nrOfVeggiesLeft);
+                Console.WriteLine("-------");
+
+
+                // Wait for the next day
+                Console.ReadKey();
+            }    
         }
     }
 }
