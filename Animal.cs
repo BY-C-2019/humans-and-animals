@@ -16,6 +16,7 @@ namespace humans_and_animals
             name = Console.ReadLine();
         }
 
+        // method to output animal species and name
         public void ShowAnimal()
         {
             Console.WriteLine(species + " " + name);
@@ -33,7 +34,7 @@ namespace humans_and_animals
             hungerLevel++;
         }
 
-        // method that checks food availability and lets animal eat
+        // method to check food availability and to let animal eat
         public virtual bool Eat()
         {
             if (Program.nrOfMeatLeft > 0)
@@ -69,7 +70,7 @@ namespace humans_and_animals
             return false;
         }
 
-        // method to feed the animal
+        // method to feed animal
         public void GiveFood()
         {
             if (isHungry(hungerLevel))
@@ -86,13 +87,14 @@ namespace humans_and_animals
             }
         }
 
-        // gets animal name
+        // method to get animal name
         public string GetName()
         {
             return name;
         }
     }
 
+    // eats leaves 
     class Elefant : Animal
     {
         // constructor
@@ -120,7 +122,7 @@ namespace humans_and_animals
         }
     }
 
-    // eats leaves (like elefant)
+    // eats leaves (inherits elefant)
     class Giraffe : Elefant
     {
         public Giraffe()
@@ -174,7 +176,7 @@ namespace humans_and_animals
         }
     }
 
-    // eats meat (like wolf)
+    // eats meat (inherits wolf)
     class Seal : Prariewolf
     {
         public Seal()
